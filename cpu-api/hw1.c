@@ -15,12 +15,13 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Error forking\n");
         exit(1);
     } else if (rc == 0) {
-        printf("%d\n the value of x in the child", x);
+        printf("%d the value of x in the child\n", x);
         x = 50;
-        printf("%d\n the value of x in the child after mutating", x);
+        printf("%d the value of x in the child after mutating\n", x);
     } else {
-        printf("%d\n the value of x in the parent", x);
+        printf("%d the value of x in the parent\n", x);
         wait(NULL);
+        printf("%d the value of x in the parent after mutating\n", x);
     }
     return 0;
 }
