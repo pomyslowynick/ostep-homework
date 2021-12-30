@@ -20,9 +20,8 @@ int main(int argc, char *argv[]) {
         printf("%d\n the value of x in the child after mutating", x);
     } else {
         printf("%d\n the value of x in the parent", x);
-        int rc = wait(NULL);
+        wait(NULL);
     }
-    wait_or_die();
     return 0;
 }
 
