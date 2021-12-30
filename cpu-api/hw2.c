@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[]) {
     // process a
-    FILE *fp = open("README.md", O_RONLY);
+    FILE *fp = open("README.md", O_RDONLY);
     char* line = NULL;
     size_t len = 0;
     int rc = fork();
@@ -18,11 +18,11 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Error forking\n");
         exit(1);
     } else if (rc == 0) {
-        getline(&line, &len, fp)
+        getline(&line, &len, fp);
         printf("%s", line);
     } else {
         wait(NULL);
-        getline(&line, &len, fp)
+        getline(&line, &len, fp);
         printf("%s", line);
     }
     return 0;
