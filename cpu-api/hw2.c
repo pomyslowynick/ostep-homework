@@ -11,21 +11,21 @@
 int main(int argc, char *argv[]) {
     // process a
     FILE *fp = open("README.md", O_RDONLY);
-    char* line = NULL;
-    size_t len = 0;
+    char *buffer;
+    size_t bufsize = 100;
+    buffer = (char *)malloc(bufsize * sizeof(char));
     int rc = fork();
     if (rc < 0) {
         fprintf(stderr, "Error forking\n");
         exit(1);
     } else if (rc == 0) {
-        getline(&line, &len, fp);
-        printf("%s", line);
+        getline(&buffer, &bufsize, fp);
+        printf("%s", buffer);
     } else {
+        getline(&buffer, &bufsize, fp);
         wait(NULL);
-        getline(&line, &len, fp);
-        printf("%s", line);
+        printf("%s", buffer);
     }
-    free(line);
+    free(buffer);
     return 0;
 }
-
