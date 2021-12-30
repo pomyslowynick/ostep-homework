@@ -25,6 +25,7 @@ int main(int argc, char *argv[]) {
         getline(&line, &len, fp);
         printf("%s", line);
     }
+    free(line);
     return 0;
 }
 
