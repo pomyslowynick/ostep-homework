@@ -10,7 +10,8 @@
 
 int main(int argc, char *argv[]) {
     // process a
-    FILE *fp = open("README.md", O_RDONLY);
+    FILE *fp = fopen("README.md", "w");
+    assert(fp != NULL);
     char *buffer;
     size_t bufsize = 100;
     buffer = (char *)malloc(bufsize * sizeof(char));
@@ -19,12 +20,12 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Error forking\n");
         exit(1);
     } else if (rc == 0) {
-        fgets(buffer, &bufsize, fp);
-        printf("%s", buffer);
+        fgets(buffer, bufsize, fp);
+        printf("Child buffer%s\n", buffer);
     } else {
-        fgets(buffer, &bufsize, fp);
+        fgets(buffer, bufsize, fp);
         wait(NULL);
-        printf("%s", buffer);
+        printf("Parent buffer %s\n", buffer);
     }
     free(buffer);
     return 0;
