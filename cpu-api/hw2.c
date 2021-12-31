@@ -19,10 +19,10 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Error forking\n");
         exit(1);
     } else if (rc == 0) {
-        getline(&buffer, &bufsize, fp);
+        fgets(buffer, &bufsize, fp);
         printf("%s", buffer);
     } else {
-        getline(&buffer, &bufsize, fp);
+        fgets(buffer, &bufsize, fp);
         wait(NULL);
         printf("%s", buffer);
     }
