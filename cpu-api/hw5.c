@@ -17,7 +17,8 @@ int main(int argc, char *argv[]) {
         int ret = wait(NULL);
         printf("Child wait ret %d\n", ret);
     } else {
-        int ret = wait(NULL);
+        int* wstatus;
+        int ret = waitpid(rc, &wstatus, 0);
         printf("Parent wait ret %d\n", ret);
     }
     return 0;
