@@ -28,29 +28,29 @@ int main(int argc, char *argv[]) {
         env[1] = strdup("Hello world!");
         env[2] = NULL;
 
-        printf("execl output: \n")
+        printf("execl output: \n");
         execl("/bin/ls", myargs);
-        printf("-------------\n")
+        printf("-------------\n");
 
-        printf("execlp output: \n")
+        printf("execlp output: \n");
         execlp("ls", myargs);
-        printf("-------------\n")
+        printf("-------------\n");
 
-        printf("execle output: \n")
+        printf("execle output: \n");
         execle("/bin/echo", myargsEcho, env);
-        printf("-------------\n")
+        printf("-------------\n");
 
-        printf("execvp output: \n")
+        printf("execvp output: \n");
         execvp("ls", myargs);
-        printf("-------------\n")
+        printf("-------------\n");
 
-        printf("execvpe output: \n")
+        printf("execvpe output: \n");
         execvpe("echo", myargsEcho, env);
-        printf("-------------\n")
+        printf("-------------\n");
 
-        printf("execv output: \n")
+        printf("execv output: \n");
         execv("/bin/ls", myargs);
-        printf("-------------\n")
+        printf("-------------\n");
     } else {
         wait(NULL);
     }
