@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     	int fds[2]; 
         pipe(fds);
         char* message = "hello from the other child\n\0";
-        write(fds[1], message, strlen(message) + 1);
+        write(fds[1], message, strlen(message));
         close(fds[1]);
         int rc1 = fork();
         if (rc1 < 0) {
