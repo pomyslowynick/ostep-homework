@@ -15,12 +15,15 @@ int main(int argc, char *argv[]) {
         exit(1);
     } else if (rc == 0) {
         int ret = wait(NULL);
+        sleep(10);
+        printf("hello, I am child (pid:%d)\n", (int) getpid());
         printf("Child wait ret %d\n", ret);
     } else {
-        int* wstatus;
+        int wstatus;
+        printf("Child status %d\n", wstatus);
         int ret = waitpid(rc, &wstatus, 0);
         printf("Parent wait ret %d\n", ret);
+        printf("Child status %d\n", wstatus);
     }
     return 0;
 }
-
