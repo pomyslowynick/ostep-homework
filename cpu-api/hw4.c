@@ -29,11 +29,11 @@ int main(int argc, char *argv[]) {
         env[2] = NULL;
 
         printf("execl output: \n");
-        execl("/bin/ls", myargs);
+        execl("/bin/ls", myargsls);
         printf("-------------\n");
 
         printf("execlp output: \n");
-        execlp("ls", myargs);
+        execlp("ls", myargsls);
         printf("-------------\n");
 
         printf("execle output: \n");
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
         printf("-------------\n");
 
         printf("execvp output: \n");
-        execvp("ls", myargs);
+        execvp("ls", myargsls);
         printf("-------------\n");
 
         printf("execvpe output: \n");
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
         printf("-------------\n");
 
         printf("execv output: \n");
-        execv("/bin/ls", myargs);
+        execv("/bin/ls", myargsls);
         printf("-------------\n");
     } else {
         wait(NULL);
