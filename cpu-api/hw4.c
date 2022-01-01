@@ -14,10 +14,13 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Error forking\n");
         exit(1);
     } else if (rc == 0) {
-        printf("hello\n");
+        char* myargs[3];
+        myargs[0] = strdup("ls");
+        myargs[1] = NULL;
+
+        execvp("ls", myargs);
     } else {
-        sleep(1); // really hacky solution, if child takes more than a second it's wrong
-        printf("goodbye\n");
+        wait(NULL);
     }
     return 0;
 }
